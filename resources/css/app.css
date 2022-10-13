@@ -1,0 +1,20 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components{ 
+    .indicator-desktop{ 
+        @apply bg-grey w-10 h-8
+        } 
+    .indicator-mobile{
+        @apply bg-grey w-8 h-6 rounded-full
+    } 
+   }
+
+.center-y{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
