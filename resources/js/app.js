@@ -22,8 +22,12 @@ const logo = document.getElementById('logo');
 const logoText = document.getElementById('logoText');
 const leftBlob = document.getElementById('leftBlob');
 const rightBlob = document.getElementById('rightBlob');
+const body = document.body;
+let questionNumber = document.getElementById('questionNumber');
 let progressbar = document.getElementById('progressbar');
-let progressbar2 = document.getElementById('progressbar2');
+let progressbarCounter = document.getElementById('progressbarCounter');
+let progressbarLine = document.getElementById('progressbarLine');
+// let progressbar2 = document.getElementById('progressbar2');
 let filmIndicator = document.getElementById('filmIndicator').children;
 let geografiIndicator = document.getElementById('geografiIndicator').children;
 let historiaIndicator = document.getElementById('historiaIndicator').children;
@@ -36,9 +40,10 @@ let category = document.getElementById('category');
 let question = document.getElementById('question');
 let answer = document.getElementById('answer');
 
+const animationDuration = 300;
 
 let questions = [];
-const maxQuestions = 35;
+const maxQuestions = 3;
 let questionCounter = 0;
 let correctAnswer = 0;
 let currentQuestion = null
@@ -51,14 +56,16 @@ document.getElementById('startButton').onclick = function () {
       startPage.classList.remove('scale-100');
       startPage.classList.add('scale-0');
 
-      startPage.addEventListener('transitionend',function(){
+      setTimeout(()=>{
          startPage.style.display = "none";
          questionPage.style.display = "block";
-         setTimeout(()=>{
-            questionPage.classList.remove('scale-0');
-            questionPage.classList.add('scale-100');
-         },0)
-   })
+         progressbar.style.display ="block";
+      },animationDuration)
+      setTimeout(()=>{
+         questionPage.classList.remove('scale-0');
+         questionPage.classList.add('scale-100');
+       },animationDuration * 1.5)
+  
       questionCounter++;
 
       currentQuestion = questions[questionCounter - 1]
@@ -67,11 +74,11 @@ document.getElementById('startButton').onclick = function () {
       document.getElementById('question').innerHTML = currentQuestion['question'];
       document.getElementById('answer').innerHTML = currentQuestion['answer'];
 
-      document.getElementById('questionCounter').innerHTML = `Fråga ${questionCounter} av ${maxQuestions}`;
+      document.getElementById('questionNumber').innerHTML = `Fråga ${questionCounter} av ${maxQuestions}`;
 
       setTimeout(()=>{
-         progressbar.style.width = (questionCounter / maxQuestions) * 100 + "%";
-         progressbar2.style.width = (questionCounter / maxQuestions) * 100 + "%";
+         progressbarCounter.style.width = (questionCounter / maxQuestions) * 100 + "%";
+         // progressbar2.style.width = (questionCounter / maxQuestions) * 100 + "%";
       },100) //varför behöver jag skriva detta värde?
    
    });
@@ -81,38 +88,50 @@ document.getElementById('startButton').onclick = function () {
 }
 
 document.getElementById('answerButton').onclick = function () {
-   questionPage.style.display = "none";
-   answerPage.style.display = "block";
-   logoText.style.color = "white";
-   logo.src = "/images/LogoWhite.svg";
-   leftBlob.src = "/images/LeftBlobWhite.svg";
-   rightBlob.src = "/images/RightBlobWhite.svg";
+   questionPage.classList.remove('scale-100');
+   questionPage.classList.add('scale-0');
 
-   document.getElementById('questionCounter2').innerHTML = `Fråga ${questionCounter} av ${maxQuestions}`;
+   setTimeout(()=>{
+      logoText.style.color = "white";
+      questionNumber.style.color = "white";
+      progressbarCounter.style.backgroundColor = "white";
+      progressbarLine.style.backgroundColor = "white";
+      body.style.backgroundColor = "#7678ED"; // eller använd classlist med remove och add
+      logo.src = "/images/LogoWhite.svg";
+      leftBlob.src = "/images/LeftBlobWhite.svg";
+      rightBlob.src = "/images/RightBlobWhite.svg";
+      questionPage.style.display = "none";
+      answerPage.style.display = "block";
+   },animationDuration)
+      setTimeout(()=>{
+         answerPage.classList.remove('scale-0');
+         answerPage.classList.add('scale-100');
+      },animationDuration * 1.5)
+
+
+   
+
 }
 
 function nextQuestion() {
-   questionCounter++;
-   document.getElementById('questionCounter').innerHTML = `Fråga ${questionCounter} av ${maxQuestions}`;
-   setTimeout(()=>{
-      progressbar.style.width = (questionCounter / maxQuestions) * 100 + "%";
-   })
-   
-  
+ 
+   answerPage.classList.remove('scale-100');
+   answerPage.classList.add('scale-0');
 
+   questionCounter++;
+   
+   setTimeout(()=>{
+   body.style.backgroundColor = "white";
+   questionNumber.style.color = "darkblue";
+   progressbarCounter.style.backgroundColor = "darkblue";
+   progressbarLine.style.backgroundColor = "#7678ED";
    logoText.style.color = "darkblue";
    logo.src = "/images/Logo.svg";
    leftBlob.src = "/images/LeftBlob.svg";
    rightBlob.src = "/images/RightBlob.svg";
+   },animationDuration)
 
-   setTimeout(()=>{
-      progressbar2.style.width = (questionCounter / maxQuestions) * 100 + "%";
-   })
 
-   document.getElementById('result').innerHTML = `${correctAnswer} av ${maxQuestions}`
-   answerPage.style.display = "none";
-   resultPage.style.display = "block";
-   
    if (questionCounter > maxQuestions) {
       for (let i = 0; i < filmCounter; i++) {
        
@@ -149,13 +168,41 @@ function nextQuestion() {
          sportIndicator[i].classList.remove("bg-grey");
          sportIndicator[i].classList.add("bg-green");
       }
+
+      document.getElementById('result').innerHTML = `${correctAnswer} av ${maxQuestions}`
+         
+      setTimeout(()=>{
+         resultPage.classList.remove('scale-0');
+         resultPage.classList.add('scale-100');
+      },animationDuration * 1.5)
+         setTimeout(()=>{
+         answerPage.style.display = "none";
+         progressbar.style.display ="none";
+         resultPage.style.display = "block";
+      },animationDuration)
+
    } else {
-      currentQuestion = questions[questionCounter - 1]
-      document.getElementById('category').innerHTML = currentQuestion['category'];
-      document.getElementById('question').innerHTML = currentQuestion['question'];
-      document.getElementById('answer').innerHTML = currentQuestion['answer'];
-      answerPage.style.display = "none";
-      questionPage.style.display = "block";
+      
+
+   
+      setTimeout(()=>{
+         answerPage.style.display = "none";
+         questionPage.style.display = "block";
+         currentQuestion = questions[questionCounter - 1]
+         document.getElementById('category').innerHTML = currentQuestion['category'];
+         document.getElementById('question').innerHTML = currentQuestion['question'];
+         document.getElementById('answer').innerHTML = currentQuestion['answer'];
+         progressbarCounter.style.width = (questionCounter / maxQuestions) * 100 + "%";
+         document.getElementById('questionNumber').innerHTML = `Fråga ${questionCounter} av ${maxQuestions}`;
+         
+   },animationDuration)
+
+      setTimeout(()=>{
+            questionPage.classList.remove('scale-0');
+            questionPage.classList.add('scale-100');
+      },animationDuration * 1.5)
+      // answerPage.style.display = "none";
+      // questionPage.style.display = "block";
    }
 
 
@@ -210,8 +257,21 @@ document.getElementById('noButton').onclick = function () {
 document.getElementById('playAgainButton').onclick = function () {
    questionCounter = 0;
    correctAnswer = 0;
-   resultPage.style.display = "none";
-   startPage.style.display = "block";
+
+   // setTimeout(()=>{
+   //    resultPage.classList.remove('scale-100');
+   //    resultPage.classList.add('scale-0');
+   // },animationDuration * 1.5)
+   setTimeout(()=>{
+      resultPage.style.display = "none";
+      startPage.style.display = "block";
+   },animationDuration)
+   setTimeout(()=>{
+      startPage.classList.remove('scale-0');
+      startPage.classList.add('scale-100');
+   },animationDuration * 1.5)
+      
+
 }
 
 

@@ -9,7 +9,7 @@
     <title>Donkeyquiz - boilerplate</title>
 </head>
 
-<body class="font-Poppins">
+<body class="font-Poppins bg-white">
 
     <!-- donkey logo -->
     <div class="absolute p-8 tablet:pl-20 tablet:flex tablet:flex-col tablet:items-center">
@@ -29,11 +29,19 @@
         <img id="rightBlob" class="w-16 absolute tablet:mt-20 tablet:w-32 xl:w-48 2xl:w-52" src="/images/RightBlob.svg">
     </div>
 
-    <!-- ev flytta prog§ressbar hit?-->
+    <!-- ev flytta progressbar hit?-->
+    <div id="progressbar" class="hidden absolute bottom-12 w-full">
+    <div class="flex items-center flex-col text-center">
+        <div id="progressbarLine" class="relative w-56 h-[2px] bg-lightblue tablet:w-[420px] xl:w-[620px]">
+            <div id="progressbarCounter" class="absolute h-3 w-[0%] center-y bg-darkblue rounded-full progressbar-transition"></div>
+        </div>
+        <p id="questionNumber" class="text-darkblue text-14 mt-4 tablet:text-16">Fråga 2 av 35</p>
+    </div>
+    </div>
 
 
     <!-- start page -->
-    <div id="startPage" class="container h-screen transition-scale duration-1000 scale-100">
+    <div id="startPage" class="container h-screen transition-scale duration-300 scale-100">
         <div id="content" class="flex items-center flex-col text-center justify-center h-full">
             <h1 id="startHeader" class="text-darkblue text-32 font-semibold tablet:text-48">Svensk mästare i TP?
             </h1>
@@ -46,7 +54,7 @@
     </div>
 
     <!-- questionPage -->
-    <div id="questionPage" class="hidden transition-scale duration-1000 scale-0">
+    <div id="questionPage" class="hidden transition-scale duration-300 scale-0">
         <div class="container h-screen">
             <div class="flex items-center flex-col text-center justify-center h-full">
                 <p id="category" id="categoryHeader" class="text-lightblue text-14 mb-8 font-semibold">Film & TV</p>
@@ -56,19 +64,14 @@
                 <button
                     id="answerButton"class="text-lightblue text-14 font-semibold px-6 py-2.5 tablet:text-16 tablet:px-8 tablet:py-3.5 mb-12 border-lightblue border-2 rounded-full hover:bg-lightblue hover:text-white tablet:mb-36"
                     type="button">Se svaret</button>
-                <div class="">
-                    <div class="relative w-56 h-[2px] bg-lightblue tablet:w-[420px] xl:w-[620px]">
-                        <div id="progressbar" class="absolute h-3 w-[0%] center-y bg-darkblue rounded-full progressbar-transition"></div>
-                    </div>
-                    <p id="questionCounter" class="text-darkblue text-14 mt-4 tablet:text-16">Fråga 2 av 35</p>
-                </div>
+                
             </div>
         </div>
     </div>
 
     <!-- answerPage -->
-    <div id="answerPage" class="hidden">
-        <div class="container h-screen bg-lightblue">
+    <div id="answerPage" class="hidden transition-scale duration-300 scale-0">
+        <div class="container h-screen">
             <div id="textAnswer" class="flex items-center flex-col text-center justify-center h-full">
                 <p class="text-white text-14 mb-8 font-semibold mt-8 tablet:mt-48">Rätt svar:</p>
                 <h1 id="answer"
@@ -82,18 +85,18 @@
                         class="text-white text-16 font-semibold px-8 py-3.5 mb-12 border-white border-2 rounded-full hover:bg-white hover:text-lightblue tablet:mb-40"
                         type="button">Nej</button>
                 </div>
-                <div class="">
+                {{-- <div class="">
                     <div class="relative w-56 h-[2px] bg-white tablet:w-[420px] xl:w-[620px]">
                         <div id="progressbar2" class="absolute h-3 w-[0%] center-y bg-white rounded-full progressbar-transition"></div>
                     </div>
                     <p id="questionCounter2" class="text-white text-14 mt-4 tablet:text-16">Fråga 2 av 35</p>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
 
     <!-- resultPage-->
-    <div id="resultPage" class="hidden transition-scale duration-1000 scale-0">
+    <div id="resultPage" class="hidden transition-scale duration-300 scale-0">
         <div class="container h-screen">
             <div class="flex items-center flex-col text-center justify-center h-full">
                 <p class="text-darkblue text-12 font-semibold mb-4 mt-16 tablet:text-14 xl:mt-0">Ditt resultat</p>
