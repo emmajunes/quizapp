@@ -9,7 +9,7 @@ module.exports = {
     './resources/js/**/*.{vue, js, ts, jsx, tsx}',
     './resources/views/**/*.php'
   ],
-  safelist: [],
+  safelist: ['bg-green'],
   theme: {
     screens: {
       mobile: '375px',
@@ -45,8 +45,13 @@ module.exports = {
       Poppins:['Poppins','sans-serif']
     },
 
+    
+
     extend: {
-      // ..
+      transitionProperty:{
+        'scale': 'scale(0)',
+
+      }
     }
   },
   plugins: [

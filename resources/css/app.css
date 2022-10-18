@@ -6,15 +6,19 @@
 
 @layer components{ 
     .indicator-desktop{ 
-        @apply bg-grey w-10 h-8
+        @apply w-10 h-8
         } 
     .indicator-mobile{
-        @apply bg-grey w-8 h-6 rounded-full
+        @apply w-8 h-6 rounded-full
     } 
    }
 
 .center-y{
     top: 50%;
     transform: translateY(-50%);
+}
+
+.progressbar-transition{
+    transition: .2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
