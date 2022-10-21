@@ -47,6 +47,8 @@ let questionCounter = 0;
 let correctAnswer = 0;
 let currentQuestion = null
 
+let correctCategory = [];
+
 const animationDuration = 300;
 
 //********animation blob********//
@@ -132,6 +134,15 @@ document.getElementById('startButton').onclick = function () {
    axios.get("/questions").then(response => {
       questions = response.data
 
+      correctCategory['Film & TV'] = [] //eller lika med noll?
+      correctCategory['Geografi'] = []
+      correctCategory['Historia'] = []
+      correctCategory['Musik'] = []
+      correctCategory['Övrigt'] = []
+      correctCategory['Vetenskap'] = []
+      correctCategory['Sport'] = []
+   
+
       startPage.classList.remove('scale-100');
       startPage.classList.add('scale-0');
 
@@ -184,13 +195,14 @@ document.getElementById('answerButton').onclick = function () {
 //ev använda dessa för att kunna göra  om till endast en loop
 // let categoryCounter = [0, 0, 0, 0, 0, 0, 0];
 // const categories = ['Film & TV','Geografi','Historia','Musik','Övrigt','Vetenskap','Sport'];
-let filmCounter = 0;
-let geografiCounter = 0;
-let historiaCounter = 0;
-let musikCounter = 0;
-let övrigtCounter = 0;
-let vetenskapCounter = 0;
-let sportCounter = 0;
+
+// let filmCounter = 0;
+// let geografiCounter = 0;
+// let historiaCounter = 0;
+// let musikCounter = 0;
+// let övrigtCounter = 0;
+// let vetenskapCounter = 0;
+// let sportCounter = 0;
 
 //********nextQuestion when click on yes or no********//
 function nextQuestion() {
@@ -215,41 +227,40 @@ function nextQuestion() {
 
    if (questionCounter > maxQuestions) {
 
-      // for(let i=0; i < categoryCounter.length; i++){
-
-
-      //    for(let j=0; j < categories.length; j++){
-      //       categories[i].classList.remove("bg-grey");
-      //       categories[i].classList.add("bg-green");
+      // for(let i=0; i < correctCategory[category.textContent].length; i++){
+         
+      //    for(let j=0; j < correctCategory[j].length; j++){
+      //       filmIndicator[j].classList.remove("bg-grey");
+      //       filmIndicator[j].classList.add("bg-green");
       //    }
 
       // }
 
-      for (let i = 0; i < filmCounter; i++) {
+      for (let i = 0; i < correctCategory['Film & TV'].length; i++) {
          filmIndicator[i].classList.remove("bg-grey");
          filmIndicator[i].classList.add("bg-green");
       }
-      for (let i = 0; i < geografiCounter; i++) {
+      for (let i = 0; i < correctCategory['Geografi'].length; i++) {
          geografiIndicator[i].classList.remove("bg-grey");
          geografiIndicator[i].classList.add("bg-green");
       }
-      for (let i = 0; i < historiaCounter; i++) {
+      for (let i = 0; i < correctCategory['Historia'].length; i++) {
          historiaIndicator[i].classList.remove("bg-grey");
          historiaIndicator[i].classList.add("bg-green");
       }
-      for (let i = 0; i < musikCounter; i++) {
+      for (let i = 0; i < correctCategory['Musik'].length; i++) {
          musikIndicator[i].classList.remove("bg-grey");
          musikIndicator[i].classList.add("bg-green");
       }
-      for (let i = 0; i < övrigtCounter; i++) {
+      for (let i = 0; i < correctCategory['Övrigt'].length; i++) {
          övrigtIndicator[i].classList.remove("bg-grey");
          övrigtIndicator[i].classList.add("bg-green");
       }
-      for (let i = 0; i < vetenskapCounter; i++) {
+      for (let i = 0; i < correctCategory['Vetenskap'].length; i++) {
          vetenskapIndicator[i].classList.remove("bg-grey");
          vetenskapIndicator[i].classList.add("bg-green");
       }
-      for (let i = 0; i < sportCounter; i++) {
+      for (let i = 0; i < correctCategory['Sport'].length; i++) {
          sportIndicator[i].classList.remove("bg-grey");
          sportIndicator[i].classList.add("bg-green");
       }
@@ -266,13 +277,13 @@ function nextQuestion() {
          resultPage.style.display = "block";
       }, animationDuration)
 
-      filmCounter = 0;
-      geografiCounter = 0;
-      historiaCounter = 0;
-      musikCounter = 0;
-      övrigtCounter = 0;
-      vetenskapCounter = 0;
-      sportCounter = 0;
+      // filmCounter = 0;
+      // geografiCounter = 0;
+      // historiaCounter = 0;
+      // musikCounter = 0;
+      // övrigtCounter = 0;
+      // vetenskapCounter = 0;
+      // sportCounter = 0;
 
    } else {
 
@@ -299,33 +310,39 @@ function nextQuestion() {
 //********yesButton********//
 document.getElementById('yesButton').onclick = function () {
 
-   if (currentQuestion.category === 'Film & TV') {
-      filmCounter++
-   }
+   correctCategory[category.textContent].push(1) //går även att använda ++ för att öka
+   
+   console.log(correctCategory);
+   
+   
 
-   if (currentQuestion.category === 'Geografi') {
-      geografiCounter++
-   }
+   // if (currentQuestion.category === 'Film & TV') {
+   //    filmCounter++
+   // }
 
-   if (currentQuestion.category === 'Historia') {
-      historiaCounter++
-   }
+   // if (currentQuestion.category === 'Geografi') {
+   //    geografiCounter++
+   // }
 
-   if (currentQuestion.category === 'Musik') {
-      musikCounter++
-   }
+   // if (currentQuestion.category === 'Historia') {
+   //    historiaCounter++
+   // }
 
-   if (currentQuestion.category === 'Övrigt') {
-      övrigtCounter++
-   }
+   // if (currentQuestion.category === 'Musik') {
+   //    musikCounter++
+   // }
 
-   if (currentQuestion.category === 'Vetenskap') {
-      vetenskapCounter++
-   }
+   // if (currentQuestion.category === 'Övrigt') {
+   //    övrigtCounter++
+   // }
 
-   if (currentQuestion.category === 'Sport') {
-      sportCounter++
-   }
+   // if (currentQuestion.category === 'Vetenskap') {
+   //    vetenskapCounter++
+   // }
+
+   // if (currentQuestion.category === 'Sport') {
+   //    sportCounter++
+   // }
 
    correctAnswer++;
 
