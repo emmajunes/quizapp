@@ -19,12 +19,12 @@
 
     <!-- animated svg blob left-->
     <svg class="absolute top-[70%] w-[150px] tablet:w-[320px] xl:top-[50%] xl:w-[420px]" viewBox="100 0 200 200">
-        <path class="blob" d="" fill="#7678ED"></path>
+        <path class="blob text-lightblue" d="" fill="currentColor"></path>
     </svg>
 
     <!-- animated svg blob right-->
     <svg class="absolute top-0 right-0 w-[150px] tablet:w-[320px] xl:w-[420px]" viewBox="-100 0 200 200">
-        <path class="blob" d="" fill="#7678ED"></path>
+        <path class="blob text-lightblue" d="" fill="currentColor"></path>
     </svg>
 
     <!-- progressbar-->
@@ -99,7 +99,7 @@
                     <div class="flex flex-row xl:flex-col-reverse xl:items-center">
                         <p class="mobile:hidden text-darkblue text-12 font-semibold tablet:text-14 xl:block xl:mt-4">
                             Film & TV</p>
-                        <div id="filmIndicator" class="flex flex-row items-center xl:flex-col-reverse">
+                        <div id="film-and-tv" class="flex flex-row items-center xl:flex-col-reverse">
                             <div class="bg-grey indicator-mobile tablet:indicator-desktop xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
@@ -111,7 +111,7 @@
                     <div class="flex flex-row xl:flex-col-reverse xl:items-center xl:ml-11">
                         <p class="mobile:hidden text-darkblue text-12 font-semibold tablet:text-14 xl:block xl:mt-4">
                             Geografi</p>
-                        <div id="geografiIndicator" class="flex flex-row items-center xl:flex-col-reverse">
+                        <div id="geografi" class="flex flex-row items-center xl:flex-col-reverse">
                             <div class="bg-grey indicator-mobile tablet:indicator-desktop xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
@@ -123,7 +123,7 @@
                     <div class="flex flex-row xl:flex-col-reverse xl:items-center xl:ml-11">
                         <p class="mobile:hidden text-darkblue text-12 font-semibold tablet:text-14 xl:block xl:mt-4">
                             Historia</p>
-                        <div id="historiaIndicator" class="flex flex-row items-center xl:flex-col-reverse">
+                        <div id="historia" class="flex flex-row items-center xl:flex-col-reverse">
                             <div class="bg-grey indicator-mobile tablet:indicator-desktop xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
@@ -135,7 +135,7 @@
                     <div class="flex flex-row xl:flex-col-reverse xl:items-center xl:ml-11">
                         <p class="mobile:hidden text-darkblue text-12 font-semibold tablet:text-14 xl:block xl:mt-4">
                             Musik</p>
-                        <div id="musikIndicator" class="flex flex-row items-center xl:flex-col-reverse">
+                        <div id="musik" class="flex flex-row items-center xl:flex-col-reverse">
                             <div class="bg-grey indicator-mobile tablet:indicator-desktop xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
@@ -147,7 +147,7 @@
                     <div class="flex flex-row xl:flex-col-reverse xl:items-center xl:ml-11">
                         <p class="mobile:hidden text-darkblue text-12 font-semibold tablet:text-14 xl:block xl:mt-4">
                             Övrigt</p>
-                        <div id="övrigtIndicator" class="flex flex-row items-center xl:flex-col-reverse">
+                        <div id="ovrigt" class="flex flex-row items-center xl:flex-col-reverse">
                             <div class="bg-grey indicator-mobile tablet:indicator-desktop xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
@@ -159,7 +159,7 @@
                     <div class="flex flex-row xl:flex-col-reverse xl:items-center xl:ml-11">
                         <p class="mobile:hidden text-darkblue text-12 font-semibold tablet:text-14 xl:block xl:mt-4">
                             Vetenskap</p>
-                        <div id="vetenskapIndicator" class="flex flex-row items-center xl:flex-col-reverse">
+                        <div id="vetenskap" class="flex flex-row items-center xl:flex-col-reverse">
                             <div class="bg-grey indicator-mobile tablet:indicator-desktop xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
@@ -171,7 +171,7 @@
                     <div class="flex flex-row xl:flex-col-reverse xl:items-center xl:ml-11">
                         <p class="mobile:hidden text-darkblue text-12 font-semibold tablet:text-14 xl:block xl:mt-4">
                             Sport</p>
-                        <div id="sportIndicator" class="flex flex-row items-center xl:flex-col-reverse">
+                        <div id="sport" class="flex flex-row items-center xl:flex-col-reverse">
                             <div class="bg-grey indicator-mobile tablet:indicator-desktop xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
                             <div class="bg-grey ml-2 indicator-mobile tablet:indicator-desktop xl:ml-0 xl:mt-2"></div>
