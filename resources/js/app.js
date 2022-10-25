@@ -52,17 +52,18 @@ document.getElementById('startButton').onclick = function () {
       startPage.classList.remove('scale-100');
       startPage.classList.add('scale-0');
 
+      questionCounter++;
+
       setTimeout(() => {
-         questionCounter++;
+         startPage.style.display = "none";
+         questionPage.style.display = "block";
+         progressbar.style.display = "block";
          currentQuestion = questions[questionCounter - 1]
          category.innerHTML = currentQuestion['category'];
          question.innerHTML = currentQuestion['question'];
          answer.innerHTML = currentQuestion['answer'];
          questionNumber.innerHTML = `Fråga ${questionCounter} av ${maxQuestions}`;
          progressbarCounter.style.width = (questionCounter / maxQuestions) * 100 + "%";
-         startPage.style.display = "none";
-         questionPage.style.display = "block";
-         progressbar.style.display = "block";
       }, animationDuration)
 
       setTimeout(() => {
@@ -95,7 +96,7 @@ document.getElementById('answerButton').onclick = function () {
       progressbarCounter.classList.add("bg-white");
       progressbarLine.classList.remove("bg-lightblue");
       progressbarLine.classList.add("bg-white");
-      
+
       questionPage.style.display = "none";
       answerPage.style.display = "block";
    }, animationDuration)
@@ -117,7 +118,7 @@ function nextQuestion() {
 
    setTimeout(() => {
       body.classList.remove("bg-lightblue");
-      body.classList.add ("bg-white");
+      body.classList.add("bg-white");
       logo.src = "/images/Logo.svg";
       logoText.classList.remove("text-white");
       logoText.classList.add("text-darkblue");
@@ -137,10 +138,10 @@ function nextQuestion() {
 
       for (let key in correctCategory) {
 
-         for(let i = 0; i < correctCategory[key].length; i++){
+         for (let i = 0; i < correctCategory[key].length; i++) {
             document.getElementById(key).children[i].classList.remove("bg-grey")
             document.getElementById(key).children[i].classList.add("bg-green");
-      }
+         }
       }
 
       result.innerHTML = `${correctAnswer} av ${maxQuestions}`;
@@ -178,11 +179,11 @@ function nextQuestion() {
 
 //********yesButton********//
 document.getElementById('yesButton').onclick = function () {
-   let categorySlug = slugify(category.textContent, {lower:true, replacement:'-'});
-   
+   let categorySlug = slugify(category.textContent, { lower: true, replacement: '-' });
+
    correctCategory[categorySlug] = correctCategory[categorySlug] || []
    correctCategory[categorySlug].push(1)
-   
+
    correctAnswer++;
 
    nextQuestion()
@@ -203,7 +204,7 @@ document.getElementById('playAgainButton').onclick = function () {
 
    for (let key in correctCategory) {
 
-      for(let i = 0; i < correctCategory[key].length; i++){
+      for (let i = 0; i < correctCategory[key].length; i++) {
          document.getElementById(key).children[i].classList.remove("bg-green");
          document.getElementById(key).children[i].classList.add("bg-grey");
       }
@@ -219,6 +220,5 @@ document.getElementById('playAgainButton').onclick = function () {
       startPage.classList.remove('scale-0');
       startPage.classList.add('scale-100');
    }, animationDuration * 1.5)
-
 }
 
